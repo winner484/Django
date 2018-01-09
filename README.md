@@ -10,23 +10,24 @@
  
 # Django + wechat app
 1\ csrf 验证例外
-  view.py  
-  from django.views.decorators.csrf import csrf_exempt
-  ...
-  @csrf_exempt
-  def insert(request):
-    if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get("password")
-        print(username)
-        print(password)
-        models.message.objects.create(username=username, password=password)
-        # models.message.save()
-    # 给普通H5返回一个html模板
-    # return render_to_response('insert.html',context_instance=RequestContext(request))
-    # return render_to_response('insert.html',)
-        # 给微信返回数据
-        return HttpResponse("ok")
+
+   view.py  
+   from django.views.decorators.csrf import csrf_exempt
+   ...
+   @csrf_exempt
+   def insert(request):
+     if request.method == "POST":
+         username = request.POST.get('username')
+         password = request.POST.get("password")
+         print(username)
+         print(password)
+         models.message.objects.create(username=username, password=password)
+         # models.message.save()
+     # 给普通H5返回一个html模板
+     # return render_to_response('insert.html',context_instance=RequestContext(request))
+     # return render_to_response('insert.html',)
+         # 给微信返回数据
+         return HttpResponse("ok")
         
     wechat.js
     var username = 'aaaa991'
